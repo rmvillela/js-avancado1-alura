@@ -63,10 +63,20 @@
 	<script src="js/app/models/Negociacao.js"></script>
 	<script>
 		var n1 = new Negociacao(new Date(), 5, 700);
-		n1.quantidade = 2000; //não funciona pois o get que está definido dentro da classe é somente leitura
+		// n1.quantidade = 2000; não funciona pois o get que está definido dentro da classe é somente leitura
     // n1._quantidade = 2000; funcionaria pois estaria acessando diretamente a propriedade dentro do construtor
+		//console.log(`Volume: ${n1.volume} ----- Quantidade: ${n1.quantidade} ----- Data: ${n1.data} ----- Valor: ${n1.valor}`);
 
-		console.log(`Volume: ${n1.volume} ----- Quantidade: ${n1.quantidade} ----- Data: ${n1.data} ----- Valor: ${n1.valor}`);
+    console.log(n1.data);
+
+    // var amanha = new Date();
+    // amanha.setDate(11); //  método do Date() para setar um dia específico
+    // n1.data = amanha; não funciona
+
+    n1.data.setDate(11); // faz a alteração pois o Object.freeze() não entra nas propriedades de um objeto, que é o caso da data
+
+    console.log(n1.data);
+
 	</script>
 </body>
 
